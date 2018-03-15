@@ -9,6 +9,22 @@ footer {
   background: #000099;
 }
 
+.sidebar {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto
+  }
+}
+
 /* navbar */
 .navbar {
   background-color: #000099;
@@ -50,5 +66,12 @@ footer {
 	fill: #F5F5F5;
 	stroke: #D3D3D3;
 	stroke-width: 2px;
+}
+
+.bs-docs-header {
+padding: 0.5em;/*文字周りの余白*/
+color: #010101;/*文字色*/
+background: #eaf3ff;/*背景色*/
+border-bottom: solid 3px #516ab6;/*下線*/
 }
 
