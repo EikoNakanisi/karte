@@ -1,0 +1,17 @@
+<% content_for :cover do %>
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-contents">
+        <h1>看護模擬カルテ</h1>
+          <% unless logged_in? %>
+            <%= link_to '始める', signup_path, class: 'btn btn-success btn-lg' %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<p>ここは個人的に運営している看護情報学研究のホームページです。<br>
+このホームページの内容はフィクションです。登場する人物・団体・名称等は架空であり、実在のものとは関係ありません。<br>
+研究協力者に限り、ログインすることが出来ます。<br>
+ログイン希望の方はご連絡ください。</p>
