@@ -22,4 +22,9 @@ module Karte
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end
+  
+require File.expand_path('../boot', __FILE__)
+
+require 'rails/all'
+require 'csv'
 end

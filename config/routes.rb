@@ -11,4 +11,14 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   
   resources :graphs, only: [:index]
+  resources :products, only: [:index] do
+    collection do
+      post :import
+    end
+  end
+
+
+
+
+
 end
