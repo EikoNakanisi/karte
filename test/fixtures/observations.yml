@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  ob_name: MyString
+  n_1d: MyString
+  j_1d: MyString
+  s_2d: MyString
+  n_2d: MyString
+  j_2d: MyString
+  s_3d: MyString
+  n_3d: MyString
+  j_3d: MyString
+  s_4d: MyString
+  pt_no: 1
+
+two:
+  category: MyString
+  ob_name: MyString
+  n_1d: MyString
+  j_1d: MyString
+  s_2d: MyString
+  n_2d: MyString
+  j_2d: MyString
+  s_3d: MyString
+  n_3d: MyString
+  j_3d: MyString
+  s_4d: MyString
+  pt_no: 1

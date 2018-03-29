@@ -1,0 +1,56 @@
+
+<% content_for(:title) do %>
+  観察項目検索
+<% end %>
+
+<%= search_form_for @q do |f| %>
+  <%= render 'search_form', f: f %>
+<% end %>
+
+
+<table class="table table-striped table-bordered table-condensed table-hover">
+  <tr>
+   <th style="width:2%" class="text-right">患者id</th>
+   <th style="width:6%" class="text-right">category</th>
+   <th style="width:18%" class="text-right">観察名</th>
+   <th style="width:8%" class="text-center">1day日勤</th> 
+   <th style="width:8%" class="text-center">1day準夜</th> 
+   <th style="width:8%" class="text-center">2day深夜</th>
+   <th style="width:8%" class="text-center">2day日勤</th> 
+   <th style="width:8%" class="text-center">2day準夜</th> 
+   <th style="width:8%" class="text-center">3day深夜</th>
+   <th style="width:8%" class="text-center">3day日勤</th> 
+   <th style="width:8%" class="text-center">3day準夜</th> 
+   <th style="width:8%" class="text-center">4day深夜</th>
+   <th style="width:2%" class="text-right">id</th>
+  </tr>
+
+  <% @observations.each do |observation| %>
+  <tr>
+   <th style="width:2%" class="text-center"><%= observation.pt_no %></th>
+   <th style="width:6%" class="text-center"><%= observation.category %></th>
+   <th style="width:18%" class="text-right"><%= observation.ob_name %></th>
+   <td style="width:8%" class="text-center"><%= observation.n_1d %></td>
+   <td style="width:8%" class="text-center"><%= observation.j_1d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.s_2d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.n_2d %></td>
+   <td style="width:8%" class="text-center"><%= observation.j_2d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.s_3d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.n_3d %></td>
+   <td style="width:8%" class="text-center"><%= observation.j_3d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.s_4d %></td> 
+   <td style="width:2%" class="text-center"><%= observation.id %></td>
+  </tr>
+
+  <% end %>
+</table>
+
+<br>
+<div class="col-sm-12 row text-center">
+<%= link_to 'CSV', observations_path(format: "csv"), class: 'btn btn-primary btn-left', id: "Download-btn" %>
+<%= link_to 'Excel', observations_path(format: "xls"), class: 'btn btn-primary btn-left', id: "Download-btn" %>
+</div>
+<%= form_tag import_observations_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "インポート" %>
+<% end %>

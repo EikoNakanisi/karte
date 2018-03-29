@@ -1,0 +1,48 @@
+<% content_for(:title) do %>
+  観察項目の検索結果
+<% end %>
+
+<%= search_form_for(@q, url: search_observations_path, html: { method: :get, class: 'form-horizontal', role: 'form' }) do |f| %>
+  <%= render 'search_form', f: f %>
+<% end %>
+
+<%= render layout: 'shared/search_result_box' do %>
+  <table class="table table-list ">
+  <thead>
+    <tr>
+   <th style="width:2%" class="text-right">患者id</th>
+   <th style="width:6%" class="text-right">category</th>
+   <th style="width:18%" class="text-right">名前</th>
+   <th style="width:8%" class="text-center">1day日勤</th> 
+   <th style="width:8%" class="text-center">1day準夜</th> 
+   <th style="width:8%" class="text-center">2day深夜</th>
+   <th style="width:8%" class="text-center">2day日勤</th> 
+   <th style="width:8%" class="text-center">2day準夜</th> 
+   <th style="width:8%" class="text-center">3day深夜</th>
+   <th style="width:8%" class="text-center">3day日勤</th> 
+   <th style="width:8%" class="text-center">3day準夜</th> 
+   <th style="width:8%" class="text-center">4day深夜</th>
+   <th style="width:2%" class="text-right">id</th>
+    </tr>
+  </thead>
+  <% @observations.each do |observation| %>
+  <tbody>
+  <tr>
+   <th style="width:2%" class="text-center"><%= observation.pt_no %></th>
+   <th style="width:6%" class="text-center"><%= observation.category %></th>
+   <th style="width:18%" class="text-right"><%= observation.ob_name %></th>
+   <td style="width:8%" class="text-center"><%= observation.n_1d %></td>
+   <td style="width:8%" class="text-center"><%= observation.j_1d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.s_2d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.n_2d %></td>
+   <td style="width:8%" class="text-center"><%= observation.j_2d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.s_3d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.n_3d %></td>
+   <td style="width:8%" class="text-center"><%= observation.j_3d %></td> 
+   <td style="width:8%" class="text-center"><%= observation.s_4d %></td> 
+   <td style="width:2%" class="text-center"><%= observation.id %></td>
+  </tr>
+  </tbody>
+<% end %>
+</table>
+<% end %>

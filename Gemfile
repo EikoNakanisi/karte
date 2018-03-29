@@ -57,4 +57,4 @@ gem 'kaminari'
 gem'lazy_high_charts'
 
 gem 'roo'
-
+gem "ransack"

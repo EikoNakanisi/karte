@@ -1,0 +1,18 @@
+<h1>id: <%= @observation.id %> の詳細ページ</h1>
+
+<p><%= @observation.pt_no %></p>
+<p><%= @observation.category %></p>
+<p><%= @observation.ob_name %></p>
+<p><%= @observation.n_1d %></p>
+<p><%= @observation.j_1d %></p>
+<p><%= @observation.s_2d %></p>
+<p><%= @observation.n_2d %></p>
+<p><%= @observation.j_2d %></p>
+<p><%= @observation.s_3d %></p>
+<p><%= @observation.n_3d %></p>
+<p><%= @observation.j_3d %></p>
+<p><%= @observation.s_4d %></p>
+
+<%= link_to '一覧に戻る', observations_path %>
+<%= link_to '編集する', edit_observation_path(@observation) %>
+<%= link_to '削除する', @observation, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

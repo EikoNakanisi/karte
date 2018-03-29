@@ -1,0 +1,58 @@
+<%= form_for(observation) do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+<form class="form-inline">
+  <div class="form-group">
+    <%= f.label :pt_no, '患者ＩＤ' %>
+    <%= f.text_field :pt_no, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :category, 'カテゴリー' %>
+    <%= f.text_field :category, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ob_name, '観察名' %>
+    <%= f.text_field :ob_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :n_1d, '日勤1日目' %>
+    <%= f.text_field :n_1d, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :j_1d, '準夜1日目' %>
+    <%= f.text_field :j_1d, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :s_2d, '深夜2日目' %>
+    <%= f.text_field :s_2d, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :n_2d, '日勤2日目' %>
+    <%= f.text_field :n_2d, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :j_2d, '準夜2日目' %>
+    <%= f.text_field :j_2d, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :s_3d, '深夜3日目' %>
+    <%= f.text_field :s_3d, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :n_3d, '日勤3日目' %>
+    <%= f.text_field :n_3d, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :j_3d, '準夜3日目' %>
+    <%= f.text_field :j_3d, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :s_4d, '深夜4日目' %>
+    <%= f.text_field :s_4d, class: 'form-control' %>
+  </div>
+  <button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+</div>
+</div>
+<% end %>
