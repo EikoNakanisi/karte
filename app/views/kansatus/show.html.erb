@@ -1,0 +1,18 @@
+<h1>id: <%= @kansatu.id %> の詳細ページ</h1>
+
+    <p><%= @kansatu.category %></p>
+    <p><%= @kansatu.ob_name %></p>
+    <p><%= @kansatu.n_1d %></p>
+    <p><%= @kansatu.j_1d %></p>
+    <p><%= @kansatu.s_2d %></p>
+    <p><%= @kansatu.n_2d %></p>
+    <p><%= @kansatu.j_2d %></p>
+    <p><%= @kansatu.s_3d %></p>
+    <p><%= @kansatu.n_3d %></p>
+    <p><%= @kansatu.j_3d %></p>
+    <p><%= @kansatu.s_4d %></p>
+    <p><%= @kansatu.patient_id %></p>
+    
+<%= link_to '一覧に戻る', kansatus_path %>
+<%= link_to '編集', edit_kansatu_path(@kansatu) %>
+<%= link_to '削除', @kansatu, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

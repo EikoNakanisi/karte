@@ -27,7 +27,7 @@
 
   <% @observations.each do |observation| %>
   <tr>
-   <th style="width:2%" class="text-center"><%= observation.pt_no %></th>
+   <th style="width:2%" class="text-center"><%= observation.patient %></th>
    <th style="width:6%" class="text-center"><%= observation.category %></th>
    <th style="width:18%" class="text-right"><%= observation.ob_name %></th>
    <td style="width:8%" class="text-center"><%= observation.n_1d %></td>
@@ -39,7 +39,7 @@
    <td style="width:8%" class="text-center"><%= observation.n_3d %></td>
    <td style="width:8%" class="text-center"><%= observation.j_3d %></td> 
    <td style="width:8%" class="text-center"><%= observation.s_4d %></td> 
-   <td style="width:2%" class="text-center"><%= observation.id %></td>
+   <td style="width:2%" class="text-center"><%= link_to observation.id, observation %></td>
   </tr>
 
   <% end %>
@@ -54,3 +54,5 @@
   <%= file_field_tag :file %>
   <%= submit_tag "インポート" %>
 <% end %>
+
+<%= link_to '新規投稿', new_observation_path %>

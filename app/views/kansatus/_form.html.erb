@@ -1,12 +1,11 @@
-<%= form_for(@observation) do |f| %>
-
-
-
+<%= form_for(kansatu) do |f| %>
   <div class="row">
     <div class="col-sm-6">
 <form class="form-inline">
-  <div class="field">
-    <%= f.label "Patient Id" %><%= f.text_field :patient_id, disabled: true %>
+
+    <div class="form-group">
+    <%= f.label :patient_id, '患者ＩＤ' %>
+    <%= f.text_field :patient_id, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :category, 'カテゴリー' %>

@@ -5,7 +5,7 @@
   <div class="form-group">
     <label class="col-sm-4 control-label" for="">患者ＩＤ</label>
     <div class="col-sm-8">
-      <%= f.text_field :pt_no_start, class: 'form-control' %>
+      <%= f.text_field :patient_id_start, class: 'form-control' %>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
 </div>
 
 <div class="col-sm-12 row text-center">
-  <%= link_to observations_path, class: 'btn btn-default btn-left' do %>クリア<% end %>
+  <%= link_to kansatus_path, class: 'btn btn-default btn-left' do %>クリア<% end %>
   <button class="btn btn-default btn-primary" type="submit"><i class="fa fa-search"></i> 検索</button>
 </div>
 

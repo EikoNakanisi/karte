@@ -12,7 +12,7 @@ one:
   n_3d: MyString
   j_3d: MyString
   s_4d: MyString
-  patient: one
+  patient_id: 1
 
 two:
   category: MyString
@@ -26,4 +26,4 @@ two:
   n_3d: MyString
   j_3d: MyString
   s_4d: MyString
-  patient: two
+  patient_id: 1

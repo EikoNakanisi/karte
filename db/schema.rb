@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180325103900) do
+ActiveRecord::Schema.define(version: 20180403102538) do
 
-  create_table "observations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "kansatus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "category"
     t.string   "ob_name"
     t.string   "n_1d"
@@ -24,17 +24,62 @@ ActiveRecord::Schema.define(version: 20180325103900) do
     t.string   "n_3d"
     t.string   "j_3d"
     t.string   "s_4d"
-    t.integer  "pt_no"
+    t.integer  "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.integer  "price"
-    t.date     "released_on"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "patients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "p_name"
+    t.string   "p_kana"
+    t.datetime "hos_date"
+    t.string   "room_no"
+    t.date     "birth_date"
+    t.integer  "age"
+    t.integer  "gender"
+    t.string   "diagnosis"
+    t.string   "med_history"
+    t.integer  "bloodtype"
+    t.float    "height",        limit: 24
+    t.float    "weight",        limit: 24
+    t.string   "infection"
+    t.string   "allergic"
+    t.integer  "aid"
+    t.string   "attention"
+    t.string   "post"
+    t.string   "address"
+    t.string   "wish"
+    t.string   "notice"
+    t.string   "recognition"
+    t.string   "life"
+    t.integer  "ps"
+    t.integer  "hand_mmt"
+    t.integer  "foot_mmt"
+    t.string   "vision"
+    t.string   "hearing"
+    t.string   "verbal"
+    t.string   "skin"
+    t.string   "excretion"
+    t.string   "iadl"
+    t.string   "consciousness"
+    t.string   "understanding"
+    t.string   "keyp1"
+    t.string   "connection"
+    t.string   "family"
+    t.string   "house"
+    t.string   "impact"
+    t.string   "relationship"
+    t.string   "friend"
+    t.string   "occupation"
+    t.string   "position"
+    t.string   "good_p"
+    t.string   "bad_p"
+    t.string   "value"
+    t.string   "hobby"
+    t.string   "anniversary"
+    t.string   "fa_prob"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,0 +1,209 @@
+
+<div class="col-sm-10">
+
+
+<div class="row">
+  <div class="col-md-4"><h3>名前：<ruby><rb><%= @patient.p_name %><rt><%= @patient.p_kana %></ruby></h3></div>
+  <div class="col-md-2"><h3>性別：<%= @patient.gender %></h3></div>
+  <div class="col-md-4"><h3>生年月日：<%= @patient.birth_date %></h3></div>
+  <div class="col-md-2"><h3>年齢：<%= @patient.age %>歳</h3></div>
+</div>
+<div class="row">
+  <div class="col-md-4"><h4>入院日:<%= @patient.hos_date.strftime('%Y年%m月%d日 %H:%M') %></h4></div>
+  <div class="col-md-2"><h4>部屋番号：<%= @patient.room_no %></h4></div>
+  <div class="col-md-2"><h4>血液型：<%= @patient.bloodtype %>型</h4></div>
+  <div class="col-md-2"><h4>身長：<%= @patient.height %>cm</h4></div>
+  <div class="col-md-2"><h4>体重：<%= @patient.weight %>kg</h4></div>
+</div>
+
+
+<ul class="nav nav-tabs" role="tablist" id="myTab">
+  <li role="presentation" class="active"><a href="#kihon" aria-controls="kihon" role="tab" data-toggle="tab">基本情報</a></li>
+  <li role="presentation"><a href="#adl" aria-controls="adl" role="tab" data-toggle="tab">ＡＤＬ・認知機能</a></li>
+  <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab">本人・家族を取り巻く事柄</a></li>
+</ul>
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="kihon">
+基本情報
+<div class="row">
+<table class="table table-condensed table-hover table-bordered">
+<tr>
+   <th style="width:25%" class="text-center">住所</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.address %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">診断名</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.diagnosis %></th>
+</tr>
+<tr> 
+   <th style="width:25%" class="text-center">既往歴<br>現病歴</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.med_history %></th>
+</tr> 
+<tr> 
+   <th style="width:25%" class="text-center">当院についての捉え方<br>希望事項</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.wish %></th>
+</tr> 
+<tr> 
+   <th style="width:25%" class="text-center">告知の<br>有無</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.notice %></th>
+</tr> 
+<tr> 
+   <th style="width:25%" class="text-center">病状についての認知<br>今後どこまで知りたいか</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.recognition %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">感染症</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.infection %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">アレルギー</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.allergic %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">救護区分</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.aid %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">PS</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.ps %></th>
+</tr>
+</table>
+</div>
+</div>
+  <div role="tabpanel" class="tab-pane" id="adl">
+ＡＤＬ・認知機能
+<div class="row">
+<table class="table table-condensed table-hover table-bordered">
+<tr>
+   <th style="width:25%" class="text-center">1日の生活様式</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.life %></th>
+</tr>
+<tr>
+   <th colspan="2">＜日常生活行動の能力・介助の程度＞</th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">ＭＭＴ：手</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.hand_mmt %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">ＭＭＴ：足</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.foot_mmt %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">視力</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.vision %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">聴力</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.hearing %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">言語力</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.verbal %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">皮膚</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.skin %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">排泄</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.excretion %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">ＩＡＤＬ</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.iadl %></th>
+</tr>
+
+<tr>
+   <th colspan="2">＜認知的側面＞</th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">意識レベル</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.consciousness %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">理解力</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.understanding %></th>
+</tr>
+</table>
+</div>
+</div>
+  <div role="tabpanel" class="tab-pane" id="family">
+本人・家族を取り巻く事柄
+<div class="row">
+<table class="table table-condensed table-hover table-bordered">
+<tr>
+   <th style="width:25%" class="text-center">キーパーソン</th>
+   <td style="width:65%" class="text-left"><%= @patient.keyp1 %>, 続柄：<%= @patient.connection %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">家族構成</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.family %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">居住環境</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.house %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">本人の健康状態が家族に与える影響</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.impact %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">家族内での役割・家族間の人間関係</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.relationship %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">対人関係・友人付き合い（最期に会っておきたい人）</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.friend %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">職業</th>
+   <td style="width:65%" class="text-left"><%= @patient.occupation %>, 地位役割：<%= @patient.position %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">長所</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.good_p %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">短所</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.bad_p %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">本人の癖・こだわり・価値観</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.value %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">趣味</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.hobby %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">家族内の記念日・行事</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.anniversary %></th>
+</tr>
+<tr>
+   <th style="width:25%" class="text-center">家族の問題</th>
+   <td style="width:65%" class="text-left"><%= simple_format @patient.fa_prob %></th>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+<%= link_to '一覧に戻る', patients_path %>
+<%= link_to '編集する', edit_patient_path(@patient) %>
+<%= link_to '削除する', @patient, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+
+</div>
+
+
+<script>
+  $(function () {
+    $('#myTab a:first').tab('show')
+  })
+</script>
+
+<div class="row col-sm-2">
+<%= render 'layouts/sidebar' %>
+</div>
+

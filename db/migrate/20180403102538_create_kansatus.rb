@@ -1,6 +1,6 @@
-class CreateObservations < ActiveRecord::Migration[5.0]
+class CreateKansatus < ActiveRecord::Migration[5.0]
   def change
-    create_table :observations do |t|
+    create_table :kansatus do |t|
       t.string :category
       t.string :ob_name
       t.string :n_1d
@@ -12,7 +12,7 @@ class CreateObservations < ActiveRecord::Migration[5.0]
       t.string :n_3d
       t.string :j_3d
       t.string :s_4d
-      t.integer :pt_no
+      t.integer :patient_id
 
       t.timestamps
     end

@@ -1,0 +1,217 @@
+<%= form_for(patient) do |f| %>
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+
+  <div class="form-group">
+    <%= f.label :p_name, '名前' %>
+    <%= f.text_field :p_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :p_kana, 'カナ' %>
+    <%= f.text_field :p_kana, class: 'form-control' %>
+  </div>
+  
+  <div class="hospitalization_field">
+    <%= f.label :hos_date, '入院日' %>
+    <%= f.date_select(:hos_date,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :room_no, '部屋番号' %><br>
+    <%= f.text_field :room_no, class: 'form-control' %>
+  </div>
+
+  <div class="birth_date_field">
+    <%= f.label :birth_date, '誕生日' %>
+    <%= f.date_select(:birth_date,
+    start_year: 1910,
+    end_year:   (Time.now.year - 18),
+    default:    Date.new(1989, 1, 1)) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender, '性別' %>
+    <%= f.select :gender, Patient.genders.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :diagnosis, '診断名' %>
+  <%= f.text_area :diagnosis, class: 'form-control', rows: 3 %>
+</div>
+<div class="form-group">
+  <%= f.label :med_history, '既往' %>
+  <%= f.text_area :med_history, class: 'form-control', rows: 3 %>
+</div>
+  <div class="field">
+    <%= f.label :bloodtype, '血液型' %>
+    <%= f.select :bloodtype, Patient.bloodtypes.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :height, '身長' %>
+    <%= f.text_field :height, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :weight, '体重' %>
+    <%= f.text_field :weight, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :infection, '感染症' %>
+    <%= f.text_field :infection, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :allergic, 'アレルギー' %>
+    <%= f.text_field :allergic, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :aid, '救護区分' %>
+    <%= f.select :aid, Patient.aids.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :attention, '注意事項' %>
+    <%= f.text_area :attention, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :post, '掲示板' %>
+    <%= f.text_area :post, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, '住所' %>
+    <%= f.text_field :address, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :wish, '当院についての捉え方/希望事項' %>
+    <%= f.text_area :wish, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :notice, '告知' %>
+    <%= f.text_field :notice, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :recognition, '病状についての認知/今後どこまで知りたいか' %>
+    <%= f.text_area :recognition, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :life, '１日の生活' %>
+    <%= f.text_area :life, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="field">
+    <%= f.label :ps, 'ＰＳ' %>
+    <%= f.text_field :ps, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :hand_mmt, '手ＭＭＴ' %>
+    <%= f.select :hand_mmt, Patient.hand_mmts.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="field">
+    <%= f.label :foot_mmt, '足ＭＭＴ' %>
+    <%= f.select :foot_mmt, Patient.foot_mmts.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :vision, '視力' %>
+    <%= f.text_field :vision, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hearing, '聴力' %>
+    <%= f.text_field :hearing, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :verbal, '言語' %>
+    <%= f.text_field :verbal, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :skin, '皮膚' %>
+    <%= f.text_field :skin, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :excretion, '排泄' %>
+    <%= f.text_field :excretion, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :iadl, 'ＩＡＤＬ' %>
+    <%= f.text_field :iadl, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :consciousness, '意識レベル' %>
+    <%= f.text_field :consciousness, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :understanding, '理解力' %>
+    <%= f.text_field :understanding, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :keyp1, 'キーパーソン' %>
+    <%= f.text_field :keyp1, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :connection, '続柄' %>
+    <%= f.text_field :connection, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :family, '家族構成' %>
+    <%= f.text_area :family, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :house, '居住環境' %>
+    <%= f.text_area :house, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :impact, '本人の健康状態が家族に与える影響' %>
+    <%= f.text_area :impact, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :relationship, '家族内での役割・家族間の人間関係' %>
+    <%= f.text_area :relationship, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :friend, '対人関係・友人付き合い（最期に会っておきたい人）' %>
+    <%= f.text_area :friend, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :occupation, '職業' %>
+    <%= f.text_field :occupation, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :position, '地位役割' %>
+    <%= f.text_field :position, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :good_p, '長所' %>
+    <%= f.text_field :good_p, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :bad_p, '短所' %>
+    <%= f.text_field :bad_p, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :value, '本人の癖・こだわり・価値観' %>
+    <%= f.text_area :value, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hobby, '趣味' %>
+    <%= f.text_area :hobby, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :anniversary, '家族内の記念日・行事' %>
+    <%= f.text_area :anniversary, class: 'form-control', rows: 3 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :fa_prob, '家族問題' %>
+    <%= f.text_area :fa_prob, class: 'form-control', rows: 3 %>
+  </div>
+
+
+
+</div>
+</div>
+
+<button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+<% end %>

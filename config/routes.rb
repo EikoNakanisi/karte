@@ -17,22 +17,22 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users, only: [:show, :new, :create]
   
-  resources :graphs, only: [:index]
+  resources :graphs, only: [:show,:index]
 
+  resources :patients do
+    collection do
+      post :import
+    end
+  end
 
-
-  resources :observations, only: [:index] do
+  resources :kansatus do
     collection do
       get :search
       post :import
     end
   end
   
-  resources :products, only: [:index] do
-    collection do
-      post :import
-    end
-  end
+
 
 
 
