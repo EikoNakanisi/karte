@@ -58,3 +58,7 @@ gem'lazy_high_charts'
 
 gem 'roo'
 gem "ransack"
+
+group :production do
+  gem 'pg', '0.21.0'
+end

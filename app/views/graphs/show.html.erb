@@ -223,7 +223,7 @@ Highcharts.chart('container', {
 
 
 
-<table class="table table-striped table-bordered table-condensed table-hover">
+<table class="table table-striped table-bordered table-condensed table-hover" style="table-layout:fixed;width:100%;">
   <tr>
    <th colspan="2" style="width:27%" class="text-right">日付</th>
    <th colspan="3" style="width:24%" class="text-center">00/00</th>
@@ -250,25 +250,26 @@ Highcharts.chart('container', {
   <tr>
    <th style="width:7%" class="text-center"><%= kansatu.category %></th>
    <th style="width:20%" class="text-right"><%= kansatu.ob_name %></th>
-   <td style="width:8%"><%= kansatu.n_1d %></td>
-   <td style="width:8%"><%= kansatu.j_1d %></td> 
-   <td style="width:8%"><%= kansatu.s_2d %></td> 
-   <td style="width:8%"><%= kansatu.n_2d %></td>
-   <td style="width:8%"><%= kansatu.j_2d %></td> 
-   <td style="width:8%"><%= kansatu.s_3d %></td> 
-   <td style="width:8%"><%= kansatu.n_3d %></td>
-   <td style="width:8%"><%= kansatu.j_3d %></td> 
-   <td style="width:8%"><%= kansatu.s_4d %></td> 
+   <td style="word-wrap:break-word;"><%= kansatu.n_1d %></td>
+   <td style="word-wrap:break-word;"><%= kansatu.j_1d %></td> 
+   <td style="word-wrap:break-word;"><%= kansatu.s_2d %></td> 
+   <td style="word-wrap:break-word;"><%= kansatu.n_2d %></td>
+   <td style="word-wrap:break-word;"><%= kansatu.j_2d %></td> 
+   <td style="word-wrap:break-word;"><%= kansatu.s_3d %></td> 
+   <td style="word-wrap:break-word;"><%= kansatu.n_3d %></td>
+   <td style="word-wrap:break-word;"><%= kansatu.j_3d %></td> 
+   <td style="word-wrap:break-word;"><%= kansatu.s_4d %></td> 
   </tr>
   
 <% end %>
 <% end %>
 
 </table>
+<%= link_to '一覧', graphs_path %>
+
 </div>
 
 <div class="row col-sm-2">
 <%= render 'layouts/sidebar' %>
 </div>
 
-<%= link_to '一覧', graphs_path %>
