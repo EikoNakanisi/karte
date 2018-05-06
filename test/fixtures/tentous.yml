@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 1
+  kisaibi: 2018-05-06
+  age: 1
+  kiou: 1
+  katudou: 1
+  ninsiki: 1
+  haisetu: 1
+  med1: 1
+  med2: 1
+  med3: 1
+  med4: 1
+  med5: 1
+  kankyo1: 1
+  kankyo2: 1
+  goukei: 1
+  kikendo: 1
+  yobou: MyString
+
+two:
+  patient_id: 1
+  kisaibi: 2018-05-06
+  age: 1
+  kiou: 1
+  katudou: 1
+  ninsiki: 1
+  haisetu: 1
+  med1: 1
+  med2: 1
+  med3: 1
+  med4: 1
+  med5: 1
+  kankyo1: 1
+  kankyo2: 1
+  goukei: 1
+  kikendo: 1
+  yobou: MyString

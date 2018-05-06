@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403102538) do
+ActiveRecord::Schema.define(version: 20180506103222) do
 
   create_table "kansatus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "category"
@@ -80,6 +80,28 @@ ActiveRecord::Schema.define(version: 20180403102538) do
     t.string   "fa_prob"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "tentous", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "patient_id"
+    t.date     "kisaibi"
+    t.integer  "age"
+    t.integer  "kiou"
+    t.integer  "katudou"
+    t.integer  "ninsiki"
+    t.integer  "haisetu"
+    t.integer  "med1"
+    t.integer  "med2"
+    t.integer  "med3"
+    t.integer  "med4"
+    t.integer  "med5"
+    t.integer  "kankyo1"
+    t.integer  "kankyo2"
+    t.integer  "goukei"
+    t.integer  "kikendo"
+    t.string   "yobou"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,0 +1,124 @@
+<%= form_for(tentou) do |f| %>
+<div class="row">
+<div class="col-sm-6">
+
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="patient_id" class="col-sm-2 control-label">患者ＩＤ</label>
+    <div class="col-sm-10">
+    <%= f.text_field :patient_id %>
+    </div>
+  </div>
+  
+
+  <div class="kisaibi_field">
+    <%= f.label :kisaibi, '記載日' %>
+    <%= f.date_select(:kisaibi,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :age,{},checked_value = "1", unchecked_value = "0" %>
+    70歳以上である
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :kiou,{},checked_value = "1", unchecked_value = "0" %>
+    転倒・転落したことがある
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :katudou,{},checked_value = "2", unchecked_value = "0" %>
+筋力低下あり<br>
+車椅子・杖・歩行器を使用している<br>
+ふらつきあり（バランスを崩しやすい）
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :ninsiki,{},checked_value = "3", unchecked_value = "0" %>
+不穏行動がある<br>
+自立心が強い<br>
+理解力・記憶力の低下がある<br>
+何でもできると自分を過大評価する
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :haisetu,{},checked_value = "2", unchecked_value = "0" %>
+排泄時見守りが必要<br>
+排泄介助が必要<br>
+夜間トイレに行く
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :med1,{},checked_value = "5", unchecked_value = "0" %>
+    麻薬使用中
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :med2,{},checked_value = "4", unchecked_value = "0" %>
+    抗精神薬服用中
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :med3,{},checked_value = "3", unchecked_value = "0" %>
+    下剤服用中
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :med4,{},checked_value = "1", unchecked_value = "0" %>
+    睡眠安定剤服用中
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :med5,{},checked_value = "1", unchecked_value = "0" %>
+    降圧利尿剤服用中
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :kankyo1,{},checked_value = "4", unchecked_value = "0" %>
+    転科・転棟・転室をした
+  </label>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= f.check_box :kankyo2,{},checked_value = "2", unchecked_value = "0" %>
+    点滴・酸素吸入をしている
+  </label>
+</div>
+
+  <div class="form-group">
+    <%= f.label :yobou, '予防策' %>
+    <%= f.text_area :yobou, class: 'form-control', rows: 3 %>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+</div>
+</div>
+<% end %>

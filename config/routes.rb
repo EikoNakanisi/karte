@@ -32,7 +32,12 @@ Rails.application.routes.draw do
     end
   end
   
-
+  resources :tentous do
+    collection do
+      get :search
+      post :import
+    end
+  end
 
 
 

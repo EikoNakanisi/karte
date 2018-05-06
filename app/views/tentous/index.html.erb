@@ -1,0 +1,57 @@
+
+
+<table class="table table-striped table-bordered table-condensed table-hover" style="table-layout:fixed;width:100%;">
+  <tr>
+   <th style="width:2%" class="text-center">患者id</th>
+   <th style="width:6%" class="text-center">記載日</th>
+   <th style="width:6%" class="text-center">年齢</th>
+   <th style="width:6%" class="text-center">既住歴</th> 
+   <th style="width:6%" class="text-center">活動領域</th> 
+   <th style="width:6%" class="text-center">認識力</th>
+   <th style="width:6%" class="text-center">排泄</th> 
+   <th style="width:6%" class="text-center">麻薬</th> 
+   <th style="width:6%" class="text-center">抗精神薬</th>
+   <th style="width:6%" class="text-center">下剤</th> 
+   <th style="width:6%" class="text-center">睡眠安定剤</th> 
+   <th style="width:6%" class="text-center">降圧利尿剤</th>
+   <th style="width:6%" class="text-center">環境</th>
+   <th style="width:6%" class="text-center">点滴酸素</th> 
+   <th style="width:6%" class="text-center">合計</th> 
+   <th style="width:12%" class="text-center">予防策</th> 
+   <th style="width:2%" class="text-center">id</th>
+  </tr>
+  <% @tentous.each do |tentou| %>
+  <tr>
+   <th style="width:2%" class="text-center"><%= tentou.patient_id %></th>
+   <th style="width:6%" class="text-left"><%= tentou.kisaibi %></th>
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.age %></td>
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.kiou %></td>
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.katudou %></td> 
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.ninsiki %></td> 
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.haisetu %></td>
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.med1 %></td> 
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.med2 %></td> 
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.med3 %></td>
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.med4 %></td> 
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.med5 %></td> 
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.kankyo1 %></td> 
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.kankyo2 %></td>
+   <td style="word-wrap:break-word;" class="text-center"><%= tentou.goukei %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= tentou.yobou %></td> 
+   <td style="width:2%" class="text-center"><%= link_to tentou.id, tentou %></td>
+  </tr>
+
+  <% end %>
+</table>
+
+<br>
+<div class="col-sm-12 row text-center">
+<%= link_to 'CSV', tentous_path(format: "csv"), class: 'btn btn-primary btn-left', id: "Download-btn" %>
+<%= link_to 'Excel', tentous_path(format: "xls"), class: 'btn btn-primary btn-left', id: "Download-btn" %>
+</div>
+<%= form_tag import_tentous_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "インポート" %>
+<% end %>
+
+<%= link_to '新規投稿', new_tentou_path %>
