@@ -1,13 +1,22 @@
+<div class="col-sm-12">
+<div class="bs-docs-header" id="content">
+</div>
+</div>
 <div class="user-profile">
   <div class="icon text-center">
     <img src="<%= gravatar_url(@user, size: 100) %>" alt="" class="img-circle">
   </div>
   <div class="name text-center">
     <h1><%= @user.name %></h1>
-    <%= link_to 'グラフ', graphs_path, class: 'btn btn-success btn-lg' %>
-    <%= link_to '患者', patients_path, class: 'btn btn-success btn-lg' %>
-    <%= link_to '観察', kansatus_path, class: 'btn btn-success btn-lg' %>
-    <%= link_to '転倒', tentous_path, class: 'btn btn-success btn-lg' %>
+    <%= link_to 'グラフ', graphs_path, class: 'btn btn-success' %>
+    <%= link_to '患者', patients_path, class: 'btn btn-success' %>
+    <%= link_to '観察', kansatus_path, class: 'btn btn-success' %>
+    <%= link_to '転倒', tentous_path, class: 'btn btn-success' %>
+    <%= link_to 'sensor', sensors_path, class: 'btn btn-success' %>
+    <%= link_to '採血一覧', kekkas_path, class: 'btn btn-success' %>
+    <%= link_to '採血抽出', saiketus_path, class: 'btn btn-success' %>
+    <%= link_to '看護計画', plans_path, class: 'btn btn-success' %>
+    <%= link_to '看護計画詳細', pdetails_path, class: 'btn btn-success' %>
 
   </div>
   

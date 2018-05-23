@@ -55,9 +55,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 
 gem'lazy_high_charts'
-
+gem 'chart-js-rails', '~> 0.1.4'
+gem 'gon'
 gem 'roo'
 gem "ransack"
+gem 'faker','1.8.7'
+
+
 
 group :production do
   gem 'pg', '0.21.0'

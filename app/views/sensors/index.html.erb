@@ -1,0 +1,255 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.min.js"></script>
+
+
+<div class="container" style="width:100%">
+    <canvas id="canvas" style="background-color:#FFFFCC;">
+    </canvas>
+</div>
+
+
+
+<script>
+window.onload = function() {
+    ctx = document.getElementById("canvas").getContext("2d");
+    window.myBar = new Chart(ctx, {
+        type: 'line',
+        data: barChartData,
+        options: complexChartOption
+    });
+};
+</script>
+
+
+
+<script>
+
+var barChartData = {
+    labels: ['10:00','19:00','6:00','10:00','19:00','6:00'
+    ],
+    datasets: [
+    {
+        type: 'line',
+        label: 'HR',//凡例
+         lineTension: 0, 
+         fill: false,
+                     pointRadius:     5,
+                     pointStyle:      'cercle',
+                     pointBorderWidth: 1,
+      
+        data:  <%= @datas %>,
+        borderColor : "rgba(255,0,0,0.8)",
+        pointBackgroundColor:"rgba(255,102,255,0.8)",
+        //点にマウスオーバーした時の設定
+            pointHoverBackgroundColor: "rgba(255,0,0,1)",
+            pointHoverBorderColor: "rgba(255,102,255,1)",
+            pointHoverBorderWidth: 2,
+        yAxisID: "y-axis-1",// 追加
+    },
+    {
+        type: 'line',
+        label: 'BP',
+         lineTension: 0, 
+         fill: false,
+                     borderDash:      [ 2, 10],
+                     pointRadius:     8,
+                     pointStyle:      'triangle',
+                     pointBorderWidth: 2,
+        data: ['90','120','122','120','118','110'
+        ],
+        borderColor : "rgba(51,153,0,0.8)",
+        backgroundColor : "rgba(51,204,0,0.5)",
+        yAxisID: "y-axis-2",
+    },
+    {
+        type: 'line',
+        label: 'BP',
+         lineTension: 0, 
+         fill: false,
+                     borderDash:      [ 2, 10],
+                     pointRadius:     8,
+                     pointStyle:      'triangle',
+                     pointBorderWidth: 2,
+        data: ['60','80','82','78','68','52'
+        ],
+        borderColor : "rgba(51,153,0,0.8)",
+        backgroundColor : "rgba(51,204,0,0.5)",
+        yAxisID: "y-axis-2",
+    },
+    
+    {
+        type: 'line',
+        label: 'BT',
+         lineTension: 0, 
+         fill: false,
+                     pointRadius:     6,
+                     pointStyle:      'rect',
+                     pointBorderWidth: 1,
+        data: ['37.5','36.2','36.4','36.5','36.7','36.9'
+        ],
+        borderColor : "rgba(51,51,255,0.8)",
+        backgroundColor : "rgba(51,153,255,0.5)",
+        yAxisID: "y-axis-3",
+    },
+
+    {
+        type: 'line',
+        label: 'RR',
+         lineTension: 0, 
+         fill: false,
+                     borderDash:      [ 1, 20],
+                     pointRadius:     8,
+                     pointStyle:      'crossRot',
+                     pointBorderWidth: 2,
+        data: ['20','18','16','18','16','14'
+        ],
+        borderColor : "rgba(00,00,00,0.8)",
+        backgroundColor : "rgba(00,00,00,0.5)",
+        yAxisID: "y-axis-4",
+    },
+
+    ],//datasets
+};
+</script>
+
+
+
+<script>
+var complexChartOption = {
+    responsive: true,
+    
+             legend: {
+            padding: {
+                left: 50,
+                right: 0,
+                top: 0,
+                bottom: 0
+            },
+                 lineWidth: 0,
+                 labels: {
+                     fontSize: 12,
+                     boxWidth: 12,
+                     usePointStyle: true,
+                     generateLabels: function(chart){
+                         return  chart.data.datasets.map( function( dataset, i ){
+                             return {
+                                 text:           dataset.label,
+                                 fillStyle:      dataset.backgroundColor,
+                                 hidden:         !chart.isDatasetVisible(i),
+                                 lineCap:        dataset.borderCapStyle,
+                                 lineDash:       [], 
+                                 lineDashOffset: 0,
+                                 lineJoin:       dataset.borderJoinStyle,
+                                 lineWidth:      dataset.pointBorderWidth, 
+                                 strokeStyle:    dataset.borderColor,
+                                 pointStyle:     dataset.pointStyle,
+                                 datasetIndex:   i  // extra data used for toggling the datasets
+                             };
+                         })
+                     }
+                 }
+             },
+
+    scales: {
+        yAxes: [{
+            id: "y-axis-1",
+            type: "linear", 
+            position: "left",
+            backgroundColor:"rgba(255,0,0,0.8)",
+            ticks: {
+                max: 200,
+                min: 0,
+                stepSize: 40
+            },
+        }, {
+            id: "y-axis-2",
+            type: "linear", 
+            position: "left",
+            ticks: {
+                max: 200,
+                min: 0,
+                stepSize: 40
+            },
+            gridLines: {
+                drawOnChartArea: false, 
+            },
+        }, {
+            id: "y-axis-3",
+            type: "linear", 
+            position: "left",
+            ticks: {
+                max: 40,
+                min: 35,
+                stepSize: 1
+            },
+            gridLines: {
+                drawOnChartArea: false, 
+            },
+        }, {
+            id: "y-axis-4",
+            type: "linear", 
+            position: "left",
+            ticks: {
+                max: 25,
+                min: 0,
+                stepSize: 5
+            },
+            gridLines: {
+                drawOnChartArea: false, 
+            },
+
+        }],
+    }
+};
+</script>
+
+
+
+<script type="text/javascript">
+  function addTagField() {
+    $('tags').insert($('tag_field').innerHTML);
+  }
+</script>
+
+<% form_tag :action => :create do -%>
+  <%= text_field_tag 'post[datatype]' %><br />
+  <%= text_area_tag  'post[data]' %><br />
+  Tags
+  <div id="tags"></div>
+  <%= button_to_function 'タグを追加', 'addTagField();' %><br />
+  <%= submit_tag %>
+<% end -%>
+
+<div id="tag_field" style="display:none;">
+  <%= text_field_tag 'post[tags][]' %><br />
+</div>
+
+
+  <table border>
+    <tr>
+      <th>id</th>
+      <th>datatype</th>
+      <th>data</th>
+      <th>created_at</th>
+      <th>編集</th>
+
+    </tr>
+ 
+    <% @sensors.each do |sensor| %>
+    <tr>
+      <td><%= sensor.id %></td>
+      <td><%= sensor.datatype %></td>
+      <td><%= sensor.data %></td>
+      <td><%= sensor.created_at %></td>
+      <td><%= link_to sensor.id, sensor %></td>
+    </tr>
+
+    <% end %>
+ 
+    <form>
+    <tr>
+      <td><%= link_to '新規投稿', new_sensor_path %></td>
+
+    </tr>
+    </form>
+ 
+</table>

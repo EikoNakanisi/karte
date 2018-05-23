@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  touroku: 2018-05-20
+  hyouka: 1
+  jikai: 2018-05-20
+  konkyo: MyString
+  sihyo_1: MyString
+  sihyo_2: MyString
+  sihyo_3: MyString
+  kanren_1: MyString
+  kanren_2: MyString
+  kanren_3: MyString
+  mokuhyo_1: MyString
+  mokuhyo_2: MyString
+  mokuhyo_3: MyString
+  mokuhyo_4: MyString
+  mokuhyo_5: MyString
+  mhyouka_1: 1
+  mhyouka_2: 1
+  mhyouka_3: 1
+  mhyouka_4: 1
+  mhyouka_5: 1
+  mhyoud_1: 2018-05-20
+  mhyoud_2: 2018-05-20
+  mhyoud_3: 2018-05-20
+  mhyoud_4: 2018-05-20
+  mhyoud_5: 2018-05-20
+  patient: one
+
+two:
+  name: MyString
+  touroku: 2018-05-20
+  hyouka: 1
+  jikai: 2018-05-20
+  konkyo: MyString
+  sihyo_1: MyString
+  sihyo_2: MyString
+  sihyo_3: MyString
+  kanren_1: MyString
+  kanren_2: MyString
+  kanren_3: MyString
+  mokuhyo_1: MyString
+  mokuhyo_2: MyString
+  mokuhyo_3: MyString
+  mokuhyo_4: MyString
+  mokuhyo_5: MyString
+  mhyouka_1: 1
+  mhyouka_2: 1
+  mhyouka_3: 1
+  mhyouka_4: 1
+  mhyouka_5: 1
+  mhyoud_1: 2018-05-20
+  mhyoud_2: 2018-05-20
+  mhyoud_3: 2018-05-20
+  mhyoud_4: 2018-05-20
+  mhyoud_5: 2018-05-20
+  patient: two

@@ -1,0 +1,95 @@
+<div class="col-sm-12">
+<div class="bs-docs-header" id="content">
+<div class="container">
+
+<div class="row">
+  <div class="col-md-2"><h2><ruby><rb><%= @patient.p_name %><rt><%= @patient.p_kana %></ruby></h2></div>
+
+<% if @patient.gender == '男' %>
+<div class="col-sm-1"><br><img border="0" src="../images/men1.png" width="60" height="60" alt="男性" title="男性"></div>
+<% else %>
+<div class="col-sm-1"><br><img border="0" src="../images/women1.png" width="60" height="60" alt="女性" title="女性"></div>
+<% end %>
+
+  <div class="col-md-4"><h3>生年月日：<%= @patient.birth_date.strftime('%Y年%m月%d日') %></h3></div>
+  <div class="col-md-2"><h3>年齢：<%= @patient.age %>歳</h3></div>
+<div class="col-sm-6"><h4>感染症：<%= @patient.infection %>&emsp;
+アレルギー：<%= @patient.allergic %></h4></div>
+</div>
+
+<div class="row">
+  <div class="col-md-3"><h4>入院日:<%= @patient.hos_date.strftime('%Y年%m月%d日 %H:%M') %></h4></div>
+  <div class="col-md-2"><h4>部屋番号：<%= @patient.room_no %></h4></div>
+  <div class="col-md-5"><h4>血液型：<%= @patient.bloodtype %>型&emsp;&emsp;身長：<%= @patient.height %>cm&emsp;体重：<%= @patient.weight %>kg
+</h4></div>
+</div>
+
+</div></div>
+</div>
+
+
+<div class="row col-sm-10">
+
+<ul class="nav nav-pills nav-justified">
+  <li role="presentation" class="active"><a href="#today" aria-controls="today" role="tab" data-toggle="tab">本日</a></li>
+  <li role="presentation"><a href="#yesterday" aria-controls="yesterday" role="tab" data-toggle="tab">昨日</a></li>
+  <li role="presentation"><a href="#2day" aria-controls="2day" role="tab" data-toggle="tab">2日前</a></li>
+  <li role="presentation"><a href="#3day" aria-controls="3day" role="tab" data-toggle="tab">3日前</a></li>
+</ul>
+
+
+<div class="col-sm-10">
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="today">
+<h2></h2>
+<% @nreports.each do |nreport| %>
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">【SOAP&フォーカス】<%= nreport.nrt.strftime('%Y年%m月%d日%H時%M分') %><br>
+  01版：<%= nreport.nrt.strftime('%Y年%m月%d日%H時%M分') %>　看護師）看護花子</div>
+  <table class="table-bordered">
+  <tr>
+    <td>＃<%= nreport.nrn %></td>
+    <td class="text-left"><font size="+1"><%= nreport.nrm %></font></td>
+  </tr>
+  <tr>
+    <td>（S）</td>
+    <td class="text-left"><font size="+1"><%= simple_format(nreport.nrs) %></font></td>
+  </tr>
+  <tr>
+    <td>（O）</td>
+    <td class="text-left"><font size="+1"><%= simple_format(nreport.nro) %></font></td>
+  </tr>
+  <tr>
+    <td>（A）</td>
+    <td class="text-left"><font size="+1"><%= simple_format(nreport.nra) %></font></td>
+  </tr>
+  <tr>
+    <td>（P）</td>
+    <td class="text-left"><font size="+1"><%= simple_format(nreport.nrp) %></font></td>
+  </tr>
+  </table>
+
+</div>
+
+<% end %>
+</div>
+<div role="tabpanel" class="tab-pane" id="yesterday">
+昨日
+</div>
+<div role="tabpanel" class="tab-pane" id="2day">
+2day
+</div>
+<div role="tabpanel" class="tab-pane" id="3day">
+3day
+</div>
+</div>
+
+<%= link_to '一覧に戻る', nreports_path %>
+</div>
+</div>
+
+
+<div class="row col-sm-2">
+<%= render 'layouts/sidebar' %>
+</div>

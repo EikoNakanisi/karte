@@ -1,0 +1,40 @@
+<div class="col-sm-12">
+<div class="bs-docs-header" id="content">
+</div>
+</div>
+<div class="col-sm-10">
+<% @patients.each do |patient| %>
+<h2>
+<ruby><rb><%= patient.p_name %><rt><%= patient.p_kana %></ruby>
+<a href="../nreports/<%= patient.id %>">看護記録</a>
+</h2>
+
+   
+<table class="table table-striped table-bordered table-condensed table-hover" style="table-layout:fixed;width:100%;">
+  <tr>
+   <th class="text-center">患者</th>
+   <th class="text-center">id</th>
+   <th class="text-center">看護問題</th>
+   <th class="text-center">看護問題</th>
+   <th sclass="text-center">記録時間</th>
+  </tr>
+<% patient.nreports.each do |nreport| %>
+  <tr>
+   <th style="width:5%" class="text-center"><%= nreport.patient_id %></th>
+   <td style="width:5%" class="text-center"><%= link_to nreport.id, edit_nreport_path(nreport) %></td>
+   <td style="word-wrap:break-word;" class="text-left"><%= nreport.nrn %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= nreport.nrm %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= nreport.nrt %></td> 
+  </tr>
+
+  <% end %>
+</table>
+
+<% end %>
+<%= link_to '新規投稿', new_nreport_path %>
+</div>
+
+<div class="row col-sm-2">
+<%= render 'layouts/sidebar' %>
+</div>
+

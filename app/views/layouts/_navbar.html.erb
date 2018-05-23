@@ -1,5 +1,6 @@
+
 <header>
-<nav class="navbar navbar-inverse navbar-default navbar-static-top">
+<nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
    <div class="container">
       <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -10,20 +11,58 @@
       </button>
       <a class="navbar-left" href="/"><img src="/images/logo.png" alt="Mogilist"></a>
       </div>
+
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
-            
-            <li><%= link_to '患者', patients_path %></li>
-            <li><%= link_to '観察', kansatus_path %></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to 'My profile', user_path(current_user) %></li>
-                <li role="separator" class="divider"></li>
-                <li><%= link_to 'Logout', logout_path, method: :delete %></li>
-              </ul>
-            </li>
+<li>
+<button type="button" class="btn btn-info navbar-btn">
+  <span class="glyphicon glyphicon-expand" aria-hidden="true"></span><%= link_to 'ベッドマップ', patients_path %>
+</button>
+</li>
+<li>
+<button type="button" class="btn btn-warning navbar-btn">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+  <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>メンテナンス<span class="caret"></span>
+  </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to '観察', kansatus_path %></li>
+              <li><%= link_to '採血結果', saiketus_path %></li>
+              <li><%= link_to '看護計画', plans_path %></li>
+              <li><%= link_to '看護計画詳細', pdetails_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to '新規転倒', new_tentou_path %>
+              <li><%= link_to '転倒集計', tentous_path %></li>
+              
+           </ul>
+
+
+
+
+</button>
+</li>
+<li>
+<button type="button" class="btn btn-default navbar-btn">
+  <%= link_to "集計", users_path %></button>
+</li>
+<li class="dropdown">
+<button type="button" class="btn btn-default navbar-btn">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+  <%= current_user.name %><span class="caret"></span>
+  </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'My profile', user_path(current_user) %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to 'Logout', logout_path, method: :delete %>
+              </li>
+            </ul>
+
+</button>
+</li>
+
+
           <% else %>
             <li><%= link_to 'Signup', signup_path %></li>
             <li><%= link_to 'Login', login_path %></li>

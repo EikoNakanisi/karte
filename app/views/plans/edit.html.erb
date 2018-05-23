@@ -1,0 +1,10 @@
+<div class="col-sm-12">
+<div class="bs-docs-header" id="content">
+</div>
+</div>
+<h1>id: <%= @plan.id %> の編集ページ</h1>
+
+<%= render 'form', plan: @plan %>
+
+<%= link_to '一覧に戻る', plans_path %>
+<%= link_to '削除', @plan, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

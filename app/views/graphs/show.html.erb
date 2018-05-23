@@ -2,15 +2,12 @@
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-<div class="container-fluid">
-<div class="row">
-
 <div class="col-sm-12">
-    <div class="bs-docs-header" id="content">
-      <div class="container">
-        <div class="col-sm-3"><h2>
-          <ruby><rb><%= @patient.p_name %><rt><%= @patient.p_kana %></ruby>
-        </h2></div>
+<div class="bs-docs-header" id="content">
+<div class="container">
+
+<div class="row">
+  <div class="col-md-2"><h2><ruby><rb><%= @patient.p_name %><rt><%= @patient.p_kana %></ruby></h2></div>
 
 <% if @patient.gender == '男' %>
 <div class="col-sm-1"><br><img border="0" src="../images/men1.png" width="60" height="60" alt="男性" title="男性"></div>
@@ -18,18 +15,92 @@
 <div class="col-sm-1"><br><img border="0" src="../images/women1.png" width="60" height="60" alt="女性" title="女性"></div>
 <% end %>
 
+  <div class="col-md-4"><h3>生年月日：<%= @patient.birth_date.strftime('%Y年%m月%d日') %></h3></div>
+  <div class="col-md-2"><h3>年齢：<%= @patient.age %>歳</h3></div>
+<div class="col-sm-6"><h4>感染症：<%= @patient.infection %>&emsp;
+アレルギー：<%= @patient.allergic %></h4></div>
+</div>
 
-<div class="col-sm-4"><br><h4>生年月日：<%= @patient.birth_date.strftime('%Y年%m月%d日') %><br><%= @patient.age %>歳</h4></div>
-<div class="col-sm-4"><br><h4>感染症：<%= @patient.infection %><br>アレルギー：<%= @patient.allergic %></h4></div>
+<div class="row">
+  <div class="col-md-3"><h4>入院日:<%= @patient.hos_date.strftime('%Y年%m月%d日 %H:%M') %></h4></div>
+  <div class="col-md-2"><h4>部屋番号：<%= @patient.room_no %></h4></div>
+  <div class="col-md-5"><h4>血液型：<%= @patient.bloodtype %>型&emsp;&emsp;身長：<%= @patient.height %>cm&emsp;体重：<%= @patient.weight %>kg
+</h4></div>
 </div>
+
+</div></div>
 </div>
-</div>
+
+
+<script type="text/javascript">
+var vs01 = new Array();
+var vs02 = new Array();
+var vs03 = new Array();
+var vs04 = new Array();
+var vs05 = new Array();
+
+<% @taions.each do |taion| %>
+    vs01.push(<%= taion.n_1d %>);
+    vs01.push(<%= taion.j_1d %>);
+    vs01.push(<%= taion.s_2d %>);
+    vs01.push(<%= taion.n_2d %>);
+    vs01.push(<%= taion.j_2d %>);
+    vs01.push(<%= taion.s_3d %>);
+    vs01.push(<%= taion.n_3d %>);
+    vs01.push(<%= taion.j_3d %>);
+    vs01.push(<%= taion.s_4d %>);
+<%end%>
+<% @myakus.each do |myaku| %>
+    vs02.push(<%= myaku.n_1d %>);
+    vs02.push(<%= myaku.j_1d %>);
+    vs02.push(<%= myaku.s_2d %>);
+    vs02.push(<%= myaku.n_2d %>);
+    vs02.push(<%= myaku.j_2d %>);
+    vs02.push(<%= myaku.s_3d %>);
+    vs02.push(<%= myaku.n_3d %>);
+    vs02.push(<%= myaku.j_3d %>);
+    vs02.push(<%= myaku.s_4d %>);
+<%end%>
+<% @bpus.each do |bpu| %>
+    vs03.push(<%= bpu.n_1d %>);
+    vs03.push(<%= bpu.j_1d %>);
+    vs03.push(<%= bpu.s_2d %>);
+    vs03.push(<%= bpu.n_2d %>);
+    vs03.push(<%= bpu.j_2d %>);
+    vs03.push(<%= bpu.s_3d %>);
+    vs03.push(<%= bpu.n_3d %>);
+    vs03.push(<%= bpu.j_3d %>);
+    vs03.push(<%= bpu.s_4d %>);
+<%end%>
+<% @bpds.each do |bpd| %>
+    vs04.push(<%= bpd.n_1d %>);
+    vs04.push(<%= bpd.j_1d %>);
+    vs04.push(<%= bpd.s_2d %>);
+    vs04.push(<%= bpd.n_2d %>);
+    vs04.push(<%= bpd.j_2d %>);
+    vs04.push(<%= bpd.s_3d %>);
+    vs04.push(<%= bpd.n_3d %>);
+    vs04.push(<%= bpd.j_3d %>);
+    vs04.push(<%= bpd.s_4d %>);
+<%end%>
+<% @kokyus.each do |kokyu| %>
+    vs05.push(<%= kokyu.n_1d %>);
+    vs05.push(<%= kokyu.j_1d %>);
+    vs05.push(<%= kokyu.s_2d %>);
+    vs05.push(<%= kokyu.n_2d %>);
+    vs05.push(<%= kokyu.j_2d %>);
+    vs05.push(<%= kokyu.s_3d %>);
+    vs05.push(<%= kokyu.n_3d %>);
+    vs05.push(<%= kokyu.j_3d %>);
+    vs05.push(<%= kokyu.s_4d %>);
+<%end%>
+
+</script>
+
 
 
 <div class="col-sm-10">
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
 
 <script>
 Highcharts.setOptions({
@@ -38,8 +109,10 @@ Highcharts.setOptions({
 
 Highcharts.chart('container', {
     chart: {
+        backgroundColor: '#FCFFC5',
         zoomType: 'xy'
     },
+
     title: {
         text: ''
     },
@@ -70,7 +143,7 @@ Highcharts.chart('container', {
         },
         
         title: {
-            text: '呼吸',
+            text: '',
             style: {
                 color: Highcharts.getOptions().colors[4]
             }
@@ -80,8 +153,10 @@ Highcharts.chart('container', {
 
     }, { // Secondary yAxis
         gridLineWidth: 0,
+min:35, //y軸最小値
+max:40, //y軸最大値
         title: {
-            text: '体温',
+            text: '',
             style: {
                 color: Highcharts.getOptions().colors[0]
             }
@@ -98,7 +173,7 @@ Highcharts.chart('container', {
     }, { // 3 yAxis
         gridLineWidth: 0,
         title: {
-            text: '脈拍',
+            text: '',
             style: {
                 color: Highcharts.getOptions().colors[1]
             }
@@ -116,7 +191,7 @@ Highcharts.chart('container', {
     }, { // 4 yAxis
         gridLineWidth: 0,
         title: {
-            text: '血圧',
+            text: '',
             style: {
                 color: Highcharts.getOptions().colors[3]
             }
@@ -147,7 +222,8 @@ Highcharts.chart('container', {
     series: [{
         name: '体温',
         yAxis: 1,
-        data: [36.2, 36.9, 36.9, 36.5, 35.8, 37.0, 35.6, 38.5, 36.4],
+        data : vs01,
+        legendIndex: 4,
         tooltip: {
             valueSuffix: ''
         }
@@ -155,7 +231,8 @@ Highcharts.chart('container', {
     }, {
         name: '脈拍',
         yAxis: 2,
-        data: [88, 87, 85, 90, 78, 86, 80, 66, 78],
+        data : vs02,
+        legendIndex: 3,
         dashStyle: 'ShortDash',
         tooltip: {
             valueSuffix: ''
@@ -168,7 +245,8 @@ Highcharts.chart('container', {
             symbol: 'triangle'
         },
         type: 'line',
-        data: [140, 132, 134, 145, 182, 111, 125, 126, 140],
+        data : vs03,
+        legendIndex: 1,
         dashStyle: 'Dot',
         tooltip: {
             valueSuffix: ''
@@ -181,7 +259,8 @@ Highcharts.chart('container', {
             symbol: 'triangle'
         },
         type: 'line',
-        data: [80, 82, 74, 75, 82, 91, 85, 76, 70],
+        data : vs04,
+        legendIndex: 2,
         dashStyle: 'Dot',
         tooltip: {
             valueSuffix: ''
@@ -193,7 +272,8 @@ Highcharts.chart('container', {
         marker: {
             symbol: 'square'
         },
-        data: [12, 15, 16, 14, 18, 21, 20, 22, 18],
+        data : vs05,
+        legendIndex: 5,
         tooltip: {
             valueSuffix: ''
         },
@@ -224,32 +304,32 @@ Highcharts.chart('container', {
 
 
 <table class="table table-striped table-bordered table-condensed table-hover" style="table-layout:fixed;width:100%;">
-  <tr>
-   <th colspan="2" style="width:27%" class="text-right">日付</th>
-   <th colspan="3" style="width:24%" class="text-center">00/00</th>
-   <th colspan="3" style="width:24%" class="text-center">00/00</th> 
-   <th colspan="3" style="width:24%" class="text-center">00/00</th> 
+  <tr class="success">
+   <th colspan="2" style="width:15%" class="text-right">日付</th>
+   <th colspan="3" style="width:28%" class="text-center">00/00</th>
+   <th colspan="3" style="width:28%" class="text-center">00/00</th> 
+   <th colspan="3" style="width:29%" class="text-center">00/00</th> 
 
   </tr>
 
-  <tr>
-   <th colspan="2" style="width:27%" class="text-right">時間</th>
-   <th style="width:8%" class="text-center">日勤</th> 
-   <th style="width:8%" class="text-center">準夜</th> 
-   <th style="width:8%" class="text-center">深夜</th>
-   <th style="width:8%" class="text-center">日勤</th> 
-   <th style="width:8%" class="text-center">準夜</th> 
-   <th style="width:8%" class="text-center">深夜</th>
-   <th style="width:8%" class="text-center">日勤</th> 
-   <th style="width:8%" class="text-center">準夜</th> 
-   <th style="width:8%" class="text-center">深夜</th>
+  <tr class="success">
+   <th colspan="2" style="width:15%" class="text-right">時間</th>
+   <th style="width:9%" class="text-center">日勤</th> 
+   <th style="width:9%" class="text-center">準夜</th> 
+   <th style="width:9%" class="text-center">深夜</th>
+   <th style="width:9%" class="text-center">日勤</th> 
+   <th style="width:9%" class="text-center">準夜</th> 
+   <th style="width:9%" class="text-center">深夜</th>
+   <th style="width:9%" class="text-center">日勤</th> 
+   <th style="width:9%" class="text-center">準夜</th> 
+   <th style="width:9%" class="text-center">深夜</th>
  </tr>
 
 <% @kansatus.each do |kansatu| %>
-<% unless kansatu.category == 'バイタル' %>
+  <% unless kansatu.category == 'バイタル' %>
   <tr>
-   <th style="width:7%" class="text-center"><%= kansatu.category %></th>
-   <th style="width:20%" class="text-right"><%= kansatu.ob_name %></th>
+   <th style="width:3%" class="text-center success" ><%= kansatu.category %></th>
+   <th style="width:12%" class="text-right success"><%= kansatu.ob_name %></th>
    <td style="word-wrap:break-word;"><%= kansatu.n_1d %></td>
    <td style="word-wrap:break-word;"><%= kansatu.j_1d %></td> 
    <td style="word-wrap:break-word;"><%= kansatu.s_2d %></td> 
@@ -260,19 +340,20 @@ Highcharts.chart('container', {
    <td style="word-wrap:break-word;"><%= kansatu.j_3d %></td> 
    <td style="word-wrap:break-word;"><%= kansatu.s_4d %></td> 
   </tr>
-  
-<% end %>
+  <% end %>
 <% end %>
 
 </table>
 <%= link_to '一覧', graphs_path %>
 
 
-<%= high_chart("my_chart", @chart) %>
-
 </div>
 
 <div class="row col-sm-2">
 <%= render 'layouts/sidebar' %>
 </div>
+
+
+
+
 

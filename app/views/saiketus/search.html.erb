@@ -1,0 +1,48 @@
+<% content_for(:title) do %>
+  観察項目の検索結果
+<% end %>
+
+<%= search_form_for(@q, url: search_saiketus_path, html: { method: :get, class: 'form-horizontal', role: 'form' }) do |f| %>
+  <%= render 'search_form', f: f %>
+<% end %>
+
+<%= render layout: 'shared/search_result_box' do %>
+  <table class="table table-list ">
+  <thead>
+    <tr>
+   <th style="width:5%" class="text-right">患者id</th>
+   <th style="width:5%" class="text-center">id</th>
+   <th style="width:20%" class="text-center">採血採取日時</th>
+   <th style="width:20%" class="text-center">検査項目</th>
+   <th style="width:15%" class="text-center">結果</th> 
+   <th style="width:5%" class="text-center">H/L</th> 
+   <th style="width:10%" class="text-center">下限値</th>
+   <th style="width:10%" class="text-center">上限値</th> 
+   <th style="width:10%" class="text-center">単位</th> 
+    </tr>
+  </thead>
+  <% @saiketus.each do |saiketu| %>
+  <tbody>
+  <tr>
+   <th style="width:5%" class="text-center"><%= saiketu.patient_id %></th>
+   <td style="width:5%" class="text-center"><%= saiketu.id %></td>
+   <td style="word-wrap:break-word;" class="text-left"><%= saiketu.tori_day.strftime('%Y年%m月%d日') %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= saiketu.koumoku %></td> 
+<% if saiketu.kekka_m == 'H' %>
+   <td class="text-right"><font color="#EE0000"><%= saiketu.kekka %></font></td> 
+   <td class="text-center"><font color="#EE0000"><%= saiketu.kekka_m %></font></td>
+<% elsif saiketu.kekka_m == 'L' %>
+   <td class="text-right"><font color="#0000FF"><%= saiketu.kekka %></font></td> 
+   <td class="text-center"><font color="#0000FF"><%= saiketu.kekka_m %></font></td>
+<% else %>
+   <td style="word-wrap:break-word;" class="text-right"><%= saiketu.kekka %></td> 
+   <td style="word-wrap:break-word;" class="text-center"><%= saiketu.kekka_m %></td>
+<% end %>
+   <td style="word-wrap:break-word;" class="text-right"><%= saiketu.sita %></td> 
+   <td style="word-wrap:break-word;" class="text-right"><%= saiketu.ue %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= saiketu.tani %></td>
+  </tr>
+  </tbody>
+<% end %>
+</table>
+<% end %>

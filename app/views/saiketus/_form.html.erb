@@ -1,0 +1,46 @@
+<%= form_for(saiketu) do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+<form class="form-inline">
+
+    <div class="form-group">
+    <%= f.label :patient_id, '患者ＩＤ' %>
+    <%= f.text_field :patient_id, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tori_day, '採取日時' %>
+    <%= f.date_select(:tori_day,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :koumoku, '検査項目' %>
+    <%= f.text_field :koumoku, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :kekka, '結果' %>
+    <%= f.text_field :kekka, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :kekka_m, '結果H/L' %>
+    <%= f.text_field :kekka_m, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sita, '下限値' %>
+    <%= f.text_field :sita, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ue, '上限値' %>
+    <%= f.text_field :ue, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tani, '単位' %>
+    <%= f.text_field :tani, class: 'form-control' %>
+  </div>
+  <button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+</div>
+</div>
+<% end %>

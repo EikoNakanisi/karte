@@ -1,0 +1,10 @@
+<div class="col-sm-12">
+<div class="bs-docs-header" id="content">
+</div>
+</div>
+<h1>id: <%= @nreport.id %> の編集ページ</h1>
+
+<%= render 'form', nreport: @nreport %>
+
+<%= link_to '一覧に戻る', nreports_path %>
+<%= link_to '削除', @nreport, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

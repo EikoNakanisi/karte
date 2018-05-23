@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180506103222) do
+ActiveRecord::Schema.define(version: 20180523132953) do
 
   create_table "kansatus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "category"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 20180506103222) do
     t.integer  "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "nreports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "patient_id"
+    t.text     "nrs",        limit: 65535
+    t.text     "nro",        limit: 65535
+    t.text     "nra",        limit: 65535
+    t.text     "nrp",        limit: 65535
+    t.datetime "nrt"
+    t.integer  "nrn"
+    t.string   "nrm"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["patient_id"], name: "index_nreports_on_patient_id", using: :btree
   end
 
   create_table "patients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -82,6 +96,74 @@ ActiveRecord::Schema.define(version: 20180506103222) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "pdetails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "kubun"
+    t.string   "naiyo"
+    t.integer  "hyouka"
+    t.date     "hyokad"
+    t.integer  "plan_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "availability"
+    t.index ["plan_id"], name: "index_pdetails_on_plan_id", using: :btree
+  end
+
+  create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.date     "touroku"
+    t.integer  "hyouka"
+    t.date     "jikai"
+    t.string   "konkyo"
+    t.string   "sihyo_1"
+    t.string   "sihyo_2"
+    t.string   "sihyo_3"
+    t.string   "kanren_1"
+    t.string   "kanren_2"
+    t.string   "kanren_3"
+    t.string   "mokuhyo_1"
+    t.string   "mokuhyo_2"
+    t.string   "mokuhyo_3"
+    t.string   "mokuhyo_4"
+    t.string   "mokuhyo_5"
+    t.integer  "mhyouka_1"
+    t.integer  "mhyouka_2"
+    t.integer  "mhyouka_3"
+    t.integer  "mhyouka_4"
+    t.integer  "mhyouka_5"
+    t.date     "mhyoud_1"
+    t.date     "mhyoud_2"
+    t.date     "mhyoud_3"
+    t.date     "mhyoud_4"
+    t.date     "mhyoud_5"
+    t.integer  "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date     "hyokad"
+    t.integer  "plno"
+    t.index ["patient_id"], name: "index_plans_on_patient_id", using: :btree
+  end
+
+  create_table "saiketus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "tori_day"
+    t.string   "koumoku"
+    t.float    "kekka",      limit: 24
+    t.string   "kekka_m"
+    t.float    "sita",       limit: 24
+    t.float    "ue",         limit: 24
+    t.string   "tani"
+    t.integer  "patient_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["patient_id"], name: "index_saiketus_on_patient_id", using: :btree
+  end
+
+  create_table "sensors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "datatype"
+    t.integer  "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tentous", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "patient_id"
     t.date     "kisaibi"
@@ -109,8 +191,13 @@ ActiveRecord::Schema.define(version: 20180506103222) do
     t.string   "email"
     t.string   "section"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "admin",           default: false
   end
 
+  add_foreign_key "nreports", "patients"
+  add_foreign_key "pdetails", "plans"
+  add_foreign_key "plans", "patients"
+  add_foreign_key "saiketus", "patients"
 end

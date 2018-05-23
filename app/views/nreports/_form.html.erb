@@ -1,0 +1,40 @@
+<%= form_for(nreport) do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+<form class="form-inline">
+
+    <div class="form-group">
+    <%= f.label :patient_id, '患者ＩＤ' %>
+    <%= f.text_field :patient_id, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :nrn, '問題番号' %>
+    <%= f.text_field :nrn, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :nrm, '看護問題' %>
+    <%= f.text_field :nrm, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :nrt, '登録日時' %>
+    <%= f.datetime_select :nrt,
+    :start_year => Time.now.year,
+    :end_year => Time.now.year + 2,
+    :use_month_numbers => true,
+    :minute_step => 10 %>
+  </div>
+
+  <div class="form-group">
+  <%= f.label :nrs, '1s' %><%= f.text_area :nrs, class: 'form-control', rows: 3 %>
+  <%= f.label :nro, '1o' %><%= f.text_area :nro, class: 'form-control', rows: 3 %>
+  <%= f.label :nra, '1a' %><%= f.text_area :nra, class: 'form-control', rows: 3 %>
+  <%= f.label :nrp, '1p' %><%= f.text_area :nrp, class: 'form-control', rows: 3 %>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+</div>
+</div>
+<% end %>

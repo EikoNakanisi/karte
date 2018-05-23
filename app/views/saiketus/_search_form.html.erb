@@ -1,0 +1,44 @@
+<%= render layout: 'shared/search_box' do %>
+
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+  <div class="form-group">
+    <label class="col-sm-4 control-label" for="">患者ＩＤ</label>
+    <div class="col-sm-8">
+      <%= f.text_field :patient_id_eq, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label" for="">結果H/L</label>
+    <div class="col-sm-8">
+      <%= f.text_field :kekka_m_eq, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label" for="">検査項目</label>
+    <div class="col-sm-8">
+      <%= f.text_field :koumoku_cont, class: 'form-control' %>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-12 row text-center">
+  <%= link_to saiketus_path, class: 'btn btn-default btn-left' do %>クリア<% end %>
+  <button class="btn btn-default btn-primary" type="submit"><i class="fa fa-search"></i> 検索</button>
+</div>
+
+
+</div>
+
+<% end %>
+
+
+
+
+
+
+
+
+

@@ -1,13 +1,19 @@
     <div class="sidebar-nav affix" role="complementary">
 
-<p>Sidebar</p>
-<div class="btn-group-vertical" role="group" aria-label="...">
-  <button type="button" class="btn btn-default">1234567890</button>
-  <button type="button" class="btn btn-default">1234567890</button>
-  <button type="button" class="btn btn-default">1234567890</button>
-  <button type="button" class="btn btn-default">1234567890</button>
-  <button type="button" class="btn btn-default">1234567890</button>
-  <button type="button" class="btn btn-default">1234567890</button>
+<div class="btn-group-vertical" role="group" aria-label="..." style="width:100%;">
+
+<a href="javascript:history.back()" class="btn btn-warning btn-lg active">戻る</a>
+
+    <%= link_to 'グラフ', graphs_path, class: 'btn btn-info btn-lg btn-block active' %>
+    <%= link_to 'ベッドマップ', patients_path, class: 'btn btn-info btn-lg btn-block active' %>
+    <%= link_to '観察', kansatus_path, class: 'btn btn-info btn-lg btn-block active' %>
+    <%= link_to '転倒', tentous_path, class: 'btn btn-info btn-lg btn-block active' %>
+    <%= link_to '採血結果', kekkas_path, class: 'btn btn-info btn-lg btn-block active' %>
+    <%= link_to '看護計画', plans_path, class: 'btn btn-info btn-lg btn-block active' %>
+    <%= link_to '看護計画詳細', pdetails_path, class: 'btn btn-info btn-lg btn-block active' %>
+    <%= link_to '看護記録', nreports_path, class: 'btn btn-info btn-lg btn-block active' %>
+
+
 </div>
 
 </div>

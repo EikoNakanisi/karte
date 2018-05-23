@@ -2,9 +2,9 @@ class PatientsController < ApplicationController
   before_action :require_user_logged_in
   
   def index
-    # N+1問題のため、allではなくincludes
-    @patients = Patient.order(:p_name)
-
+    @patients = Patient.all
+    @count_patients = Patient.count
+    
     respond_to do |format|
       format.html
       format.csv { send_data @patients.to_csv }

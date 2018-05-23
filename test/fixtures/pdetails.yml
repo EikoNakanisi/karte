@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kubun: 1
+  naiyo: MyString
+  hyouka: 1
+  hyokad: 2018-05-20
+  plan: one
+
+two:
+  kubun: 1
+  naiyo: MyString
+  hyouka: 1
+  hyokad: 2018-05-20
+  plan: two

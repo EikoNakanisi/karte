@@ -1,0 +1,18 @@
+<div class="col-sm-12">
+<div class="bs-docs-header" id="content">
+</div>
+</div>
+<h1>id: <%= @saiketu.id %> の詳細ページ</h1>
+
+    <p><%= @saiketu.tori_day %></p>
+    <p><%= @saiketu.koumoku %></p>
+    <p><%= @saiketu.kekka %></p>
+    <p><%= @saiketu.kekka_m %></p>
+    <p><%= @saiketu.sita %></p>
+    <p><%= @saiketu.ue %></p>
+    <p><%= @saiketu.tani %></p>
+    <p><%= @saiketu.patient_id %></p>
+    
+<%= link_to '一覧に戻る', saiketus_path %>
+<%= link_to '編集', edit_saiketu_path(@saiketu) %>
+<%= link_to '削除', @saiketu, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

@@ -1,0 +1,19 @@
+<%= form_for(sensor) do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+<form class="form-inline">
+
+    <div class="form-group">
+    <%= f.label :datatype, 'datatype' %>
+    <%= f.text_field :datatype, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :data, 'data' %>
+    <%= f.text_field :data, class: 'form-control' %>
+  </div>
+  <button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+</div>
+</div>
+<% end %>

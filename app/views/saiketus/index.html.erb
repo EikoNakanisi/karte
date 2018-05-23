@@ -1,0 +1,62 @@
+<div class="col-sm-12">
+<div class="bs-docs-header" id="content">
+</div>
+</div>
+<% content_for(:title) do %>
+  観察項目検索
+<% end %>
+
+<%= search_form_for @q do |f| %>
+  <%= render 'search_form', f: f %>
+<% end %>
+
+   
+<table class="table table-striped table-bordered table-condensed table-hover" style="table-layout:fixed;width:100%;">
+  <tr>
+
+   <th style="width:5%" class="text-right">患者id</th>
+   <th style="width:5%" class="text-center">id</th>
+   <th style="width:20%" class="text-center">採血採取日時</th>
+   <th style="width:20%" class="text-center">検査項目</th>
+   <th style="width:15%" class="text-center">結果</th> 
+   <th style="width:5%" class="text-center">H/L</th> 
+   <th style="width:10%" class="text-center">下限値</th>
+   <th style="width:10%" class="text-center">上限値</th> 
+   <th style="width:10%" class="text-center">単位</th> 
+  </tr>
+  <% @saiketus.each do |saiketu| %>
+  <tr>
+   <th style="width:5%" class="text-center"><%= saiketu.patient_id %></th>
+   <td style="width:5%" class="text-center"><%= link_to saiketu.id, saiketu %></td>
+   <td style="word-wrap:break-word;" class="text-left"><%= saiketu.tori_day.strftime('%Y年%m月%d日') %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= saiketu.koumoku %></td> 
+<% if saiketu.kekka_m == 'H' %>
+   <td class="text-right"><font color="#EE0000"><%= saiketu.kekka %></font></td> 
+   <td class="text-center"><font color="#EE0000"><%= saiketu.kekka_m %></font></td>
+<% elsif saiketu.kekka_m == 'L' %>
+   <td class="text-right"><font color="#0000FF"><%= saiketu.kekka %></font></td> 
+   <td class="text-center"><font color="#0000FF"><%= saiketu.kekka_m %></font></td>
+<% else %>
+   <td style="word-wrap:break-word;" class="text-right"><%= saiketu.kekka %></td> 
+   <td style="word-wrap:break-word;" class="text-center"><%= saiketu.kekka_m %></td>
+<% end %>
+   <td style="word-wrap:break-word;" class="text-right"><%= saiketu.sita %></td> 
+   <td style="word-wrap:break-word;" class="text-right"><%= saiketu.ue %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= saiketu.tani %></td>
+  </tr>
+
+  <% end %>
+</table>
+
+<br>
+<div class="col-sm-12 row text-center">
+<%= link_to 'CSV', saiketus_path(format: "csv"), class: 'btn btn-primary btn-left', id: "Download-btn" %>
+<%= link_to 'Excel', saiketus_path(format: "xls"), class: 'btn btn-primary btn-left', id: "Download-btn" %>
+</div>
+
+<%= form_tag import_saiketus_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "インポート" %>
+<% end %>
+
+<%= link_to '新規投稿', new_saiketu_path %>

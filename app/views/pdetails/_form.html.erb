@@ -1,0 +1,36 @@
+<%= form_for(pdetail) do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+<form class="form-inline">
+
+  <div class="form-group">
+    <%= f.label :plan_id, 'planＩＤ' %>
+    <%= f.text_field :plan_id, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :kubun, '区分' %>
+    <%= f.select :kubun, Pdetail.kubuns.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :naiyo, '内容' %>
+    <%= f.text_field :naiyo, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :hyouka, '評価' %>
+    <%= f.select :hyouka, Pdetail.hyoukas.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hyokad, '評価日' %>
+    <%= f.date_select(:hyokad,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+
+  
+  <button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+</div>
+</div>
+<% end %>

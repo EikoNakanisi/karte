@@ -1,0 +1,156 @@
+<%= form_for(plan) do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+<form class="form-inline">
+
+    <div class="form-group">
+    <%= f.label :patient_id, '患者ＩＤ' %>
+    <%= f.text_field :patient_id, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :plno, '問題番号' %>
+    <%= f.text_field :plno, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '看護問題' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :touroku, '登録日' %>
+    <%= f.date_select(:touroku,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hyokad, '評価日' %>
+    <%= f.date_select(:hyokad,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hyouka, '評価' %>
+    <%= f.select :hyouka, Plan.hyoukas.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :jikai, '次回評価日' %>
+    <%= f.date_select(:jikai,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :konkyo, '診断根拠' %>
+    <%= f.text_field :konkyo, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sihyo_1, '診断指標１' %>
+    <%= f.text_field :sihyo_1, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sihyo_2, '診断指標２' %>
+    <%= f.text_field :sihyo_2, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sihyo_3, '診断指標３' %>
+    <%= f.text_field :sihyo_3, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :kanren_1, '関連指標１' %>
+    <%= f.text_field :kanren_1, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :kanren_2, '関連指標２' %>
+    <%= f.text_field :kanren_2, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :kanren_3, '関連指標３' %>
+    <%= f.text_field :kanren_3, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mokuhyo_1, '患者目標１' %>
+    <%= f.text_field :mokuhyo_1, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mokuhyo_2, '患者目標２' %>
+    <%= f.text_field :mokuhyo_2, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mokuhyo_3, '患者目標３' %>
+    <%= f.text_field :mokuhyo_3, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mokuhyo_4, '患者目標４' %>
+    <%= f.text_field :mokuhyo_4, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mokuhyo_5, '患者目標５' %>
+    <%= f.text_field :mokuhyo_5, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :mhyouka_1, '目標評価１' %>
+    <%= f.select :mhyouka_1, Plan.mhyouka_1s.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="field">
+    <%= f.label :mhyouka_2, '目標評価２' %>
+    <%= f.select :mhyouka_2, Plan.mhyouka_2s.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="field">
+    <%= f.label :mhyouka_3, '目標評価３' %>
+    <%= f.select :mhyouka_3, Plan.mhyouka_3s.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="field">
+    <%= f.label :mhyouka_4, '目標評価４' %>
+    <%= f.select :mhyouka_4, Plan.mhyouka_4s.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+  <div class="field">
+    <%= f.label :mhyouka_5, '目標評価５' %>
+    <%= f.select :mhyouka_5, Plan.mhyouka_5s.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mhyoud_1, '目標次回評価日１' %>
+    <%= f.date_select(:mhyoud_1,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mhyoud_2, '目標次回評価日２' %>
+    <%= f.date_select(:mhyoud_2,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mhyoud_3, '目標次回評価日３' %>
+    <%= f.date_select(:mhyoud_3,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mhyoud_4, '目標次回評価日４' %>
+    <%= f.date_select(:mhyoud_4,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mhyoud_5, '目標次回評価日５' %>
+    <%= f.date_select(:mhyoud_5,
+    start_year: 2018,
+    end_year:   (Time.now.year - 19),
+    default:    Date.new(2018, 1,15)) %>
+  </div>
+
+
+  
+  <button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+</div>
+</div>
+<% end %>

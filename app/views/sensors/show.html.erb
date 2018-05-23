@@ -1,0 +1,9 @@
+<h1>id: <%= @sensor.id %> の詳細ページ</h1>
+
+    <p><%= @sensor.datatype %></p>
+    <p><%= @sensor.data %></p>
+
+    
+<%= link_to '一覧に戻る', sensors_path %>
+<%= link_to '編集', edit_sensor_path(@sensor) %>
+<%= link_to '削除', @sensor, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

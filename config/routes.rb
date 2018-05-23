@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:show, :new, :create]
+  resources :users
   
   resources :graphs, only: [:show,:index]
 
@@ -39,8 +39,23 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :saiketus do
+    collection do
+      get :search
+      post :import
+    end
+  end
+  resources :sensors
 
+  resources :kekkas
+  resources :plans
 
+  resources :pdetails do
+    collection do
+      post :import
+    end
+  end
 
+  resources :nreports
 
 end

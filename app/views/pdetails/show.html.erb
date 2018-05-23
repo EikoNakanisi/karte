@@ -1,0 +1,129 @@
+<div class="col-sm-12">
+<div class="bs-docs-header" id="content">
+</div>
+</div>
+
+<div class="col-sm-10">
+<div class="col-sm-10">
+<h2>#<%= @plan.plno %>&emsp;<%= @plan.name %></h2>
+</div>
+<div class="col-sm-2">
+<%= link_to '看護計画一覧', plan_path(1), class: 'btn btn-primary btn-lg active' %>
+</div>
+
+<table class="table table-striped table-bordered table-condensed table-hover" style="table-layout:fixed;width:100%;">
+  <tr class="info">
+   <th style="width:13%" class="text-center">登録日</th>
+   <th style="width:13%" class="text-center">評価日</th>
+   <th style="width:7%" class="text-center">評価</th>
+   <th style="width:13%" class="text-center">次回評価日</th> 
+  </tr>
+  <tr>
+   <td style="word-wrap:break-word;" class="text-left"><%= @plan.touroku.strftime('%Y年%m月%d日') %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= @plan.hyokad.strftime('%Y年%m月%d日') %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= @plan.hyouka %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= @plan.jikai.strftime('%Y年%m月%d日') %></td>
+  </tr>
+</table>
+
+<div class="col-sm-6">
+<div class="panel panel-info">
+  <div class="panel-heading">決定根拠・定義</div>
+  <div class="panel-body">
+    <%= simple_format @plan.konkyo %>
+  </div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="panel panel-info">
+  <div class="panel-heading">診断指標</div>
+  <div class="panel-body">
+    <%= @plan.sihyo_1 %>&emsp;
+    <%= @plan.sihyo_2 %>&emsp;
+    <%= @plan.sihyo_3 %>
+  </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">関連因子</div>
+  <div class="panel-body">
+    <%= @plan.kanren_1 %>&emsp;
+    <%= @plan.kanren_2 %>&emsp;
+    <%= @plan.kanren_3 %>
+  </div>
+</div>
+</div>
+
+<div class="col-sm-12">
+  <table class="table table-condensed table-bordered">
+  <tr class="info">
+   <th class="text-center">患者目標</th>
+   <th class="text-center">評価</th>
+   <th class="text-center">評価日</th>
+  </tr>
+  <tr>
+    <td><%= @plan.mokuhyo_1 %></td>
+    <td><%= truncate(@plan.mhyouka_1, length:3) %></td>
+    <td><%= @plan.mhyoud_1 %></td>
+  </tr>
+<% unless @plan.mokuhyo_2 == '' %>
+  <tr>
+    <td><%= @plan.mokuhyo_2 %></td>
+    <td><%= truncate(@plan.mhyouka_2, length:3) %></td>
+    <td><%= @plan.mhyoud_2 %></td>
+  </tr>
+<% end %>
+<% unless @plan.mokuhyo_3 == '' %>
+  <tr>
+    <td><%= @plan.mokuhyo_3 %></td>
+    <td><%= truncate(@plan.mhyouka_3, length:3) %></td>
+    <td><%= @plan.mhyoud_3 %></td>
+  </tr>
+<% end %>
+<% unless @plan.mokuhyo_4 == '' %>
+  <tr>
+    <td><%= @plan.mokuhyo_4 %></td>
+    <td><%= truncate(@plan.mhyouka_4, length:3) %></td>
+    <td><%= @plan.mhyoud_4 %></td>
+  </tr>
+<% end %>
+<% unless @plan.mokuhyo_5 == '' %>
+  <tr>
+    <td><%= @plan.mokuhyo_5 %></td>
+    <td><%= truncate(@plan.mhyouka_5, length:3) %></td>
+    <td><%= @plan.mhyoud_5 %></td>
+  </tr>
+<% end %>
+  </table>
+</div>
+
+
+<table class="table table-striped table-bordered table-condensed table-hover" style="table-layout:fixed;width:100%;">
+  <tr class="info">
+   <th style="width:7%" class="text-center">区分</th>
+   <th style="width:68%" class="text-center">内容</th>
+   <th style="width:7%" class="text-center">評価</th>
+   <th style="width:13%" class="text-center">評価日</th>
+  </tr>
+<% @pdetails.each do |pdetail| %>
+  <tr>
+<% if pdetail.kubun == 'ＯＰ' %>
+   <td class="danger"><%= pdetail.kubun %></td> 
+<% elsif pdetail.kubun == 'ＴＰ' %>
+   <td class="warning"><%= pdetail.kubun %></td> 
+<% else %>
+   <td class="success"><%= pdetail.kubun %></td> 
+<% end %>
+
+   <td style="word-wrap:break-word;" class="text-left"><%= pdetail.naiyo %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= pdetail.hyouka %></td> 
+   <td style="word-wrap:break-word;" class="text-left"><%= pdetail.hyokad %></td> 
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '一覧に戻る', pdetails_path %>
+</div>
+
+<div class="row col-sm-2">
+<%= render 'layouts/sidebar' %>
+</div>

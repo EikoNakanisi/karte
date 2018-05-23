@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tori_day: 2018-05-18 13:10:55
+  koumoku: MyString
+  kekka: 1.5
+  kekka_m: MyString
+  sita: 1.5
+  ue: 1.5
+  tani: MyString
+  patient: one
+
+two:
+  tori_day: 2018-05-18 13:10:55
+  koumoku: MyString
+  kekka: 1.5
+  kekka_m: MyString
+  sita: 1.5
+  ue: 1.5
+  tani: MyString
+  patient: two
